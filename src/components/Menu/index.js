@@ -5,7 +5,9 @@ import { ButtonMenu } from './styles';
 export default function Menu(props) {
   return (
     <View>
-      <ButtonMenu>ola</ButtonMenu>
+      <ButtonMenu>
+        <Text>MENU</Text>
+      </ButtonMenu>
     </View>
   );
 }
