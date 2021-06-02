@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { ButtonMenu } from './styles';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Menu(props) {
+  const Navigation = useNavigation();
+
   return (
-    <View>
-      <ButtonMenu>
-        <Text>MENU</Text>
-      </ButtonMenu>
-    </View>
+    <ButtonMenu onPress={() => Navigation.openDrawer()}>
+      <Feather name="menu" size={40} color="#fff" />
+    </ButtonMenu>
   );
 }

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <LinearGradient
       colors={['#1ddbb9', '#132742']}
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      style={{ flex: 1, justifyContent: 'center' }}
     >
       <StatusBarPage backgroundColor="#1ddbb9" barStyle="light-content" />
       <Menu />
