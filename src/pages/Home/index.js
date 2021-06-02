@@ -10,6 +10,9 @@ import {
   SubTitle,
   ContainerInput,
   BoxIcon,
+  Input,
+  ButtonLink,
+  ButtonLinkText,
 } from './style';
 import { Feather } from '@expo/vector-icons';
 
@@ -34,8 +37,15 @@ export default function Home() {
           <BoxIcon>
             <Feather name="link" size={22} color="#fff" />
           </BoxIcon>
-          <Input placeholder="Cole seu link aqui..." />
+          <Input
+            placeholder="Cole seu link aqui..."
+            placeholderTextColor="#fff"
+          />
         </ContainerInput>
+
+        <ButtonLink>
+          <ButtonLinkText>Gerar Link</ButtonLinkText>
+        </ButtonLink>
       </ContainerContent>
     </LinearGradient>
   );
