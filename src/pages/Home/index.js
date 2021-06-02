@@ -1,8 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import StatusBarPage from '../../components/StatusBarPage';
 import Menu from '../../components/Menu';
+import {
+  ContainerLogo,
+  Logo,
+  ContainerContent,
+  Title,
+  SubTitle,
+  ContainerInput,
+  BoxIcon,
+} from './style';
+import { Feather } from '@expo/vector-icons';
 
 export default function Home() {
   return (
@@ -12,7 +21,22 @@ export default function Home() {
     >
       <StatusBarPage backgroundColor="#1ddbb9" barStyle="light-content" />
       <Menu />
-      <Text>Página Home</Text>
+
+      <ContainerLogo>
+        <Logo source={require('../../assets/Logo.png')} resizeMode="contain" />
+      </ContainerLogo>
+
+      <ContainerContent>
+        <Title>SujeitoLink</Title>
+        <SubTitle>Cole seu link para encurtar</SubTitle>
+
+        <ContainerInput>
+          <BoxIcon>
+            <Feather name="link" size={22} color="#fff" />
+          </BoxIcon>
+          <Input placeholder="Cole seu link aqui..." />
+        </ContainerInput>
+      </ContainerContent>
     </LinearGradient>
   );
 }
