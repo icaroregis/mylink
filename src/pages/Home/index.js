@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TouchableWithoutFeedback,
   Keyboard,
@@ -23,6 +23,12 @@ import {
 import { Feather } from '@expo/vector-icons';
 
 export default function Home() {
+  const [input, setInput] = useState('');
+
+  function handleShortLink() {
+    alert(input);
+  }
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <LinearGradient
@@ -55,10 +61,15 @@ export default function Home() {
               <Input
                 placeholder="Cole seu link aqui..."
                 placeholderTextColor="#fff"
+                autoCapitalize="none"
+                autoCorrect={false}
+                KeyboardType="url"
+                value={input}
+                onChangeText={(text) => setInput(text)}
               />
             </ContainerInput>
 
-            <ButtonLink>
+            <ButtonLink onPress={handleShortLink}>
               <ButtonLinkText>Gerar Link</ButtonLinkText>
             </ButtonLink>
           </ContainerContent>
