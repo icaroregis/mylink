@@ -26,9 +26,11 @@ import ModalLink from '../../components/ModalLink/index';
 
 export default function Home() {
   const [input, setInput] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
   function handleShortLink() {
     // alert('URL DIGITADA:' + input);
+    setModalVisible(true);
   }
 
   return (
@@ -77,8 +79,8 @@ export default function Home() {
           </ContainerContent>
         </KeyboardAvoidingView>
 
-        <Modal visible={true} transparent animationType="slide">
-          <ModalLink />
+        <Modal visible={modalVisible} transparent animationType="slide">
+          <ModalLink onClose={() => setModalVisible(false)} />
         </Modal>
       </LinearGradient>
     </TouchableWithoutFeedback>
