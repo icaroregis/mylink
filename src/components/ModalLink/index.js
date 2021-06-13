@@ -1,5 +1,10 @@
 import React from 'react';
-import { TouchableOpacity, View, TouchableNativeFeedback } from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  TouchableNativeFeedback,
+  Share,
+} from 'react-native';
 import {
   ModalContainer,
   Container,
@@ -11,8 +16,33 @@ import {
   ShortLinkUrl,
 } from './style';
 import { Feather } from '@expo/vector-icons';
+import Clipboard from 'expo-clipboard';
 
 export default function ModalLink({ onClose }) {
+  function copyLink() {
+    Clipboard.setString('https://seulink.com.br');
+    alert('link copiado com sucesso');
+  }
+
+  async function handleShare() {
+    try {
+      const result = await Share.share({
+        message: `link: https://seulink.com.br`,
+      });
+      if (result.action === Share.shareAction) {
+        if (result.activityType) {
+          console.log('ActiveType');
+        } else {
+          console.log('Compartilhado com sucesso');
+        }
+      } else if (result.action === share.dismissedAction) {
+        console.log('Modal Fechado');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <ModalContainer>
       <TouchableNativeFeedback onPress={onClose}>
@@ -25,7 +55,7 @@ export default function ModalLink({ onClose }) {
             <Feather name="x" color="#212743" size={30} />
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleShare}>
             <Feather name="share" color="#212743" size={30} />
           </TouchableOpacity>
         </Header>
@@ -35,12 +65,12 @@ export default function ModalLink({ onClose }) {
 
           <LongUrl numberOfLines={1}>http://sujeitoprogramador.com</LongUrl>
 
-          <ShortLinkArea activeOpacity={1}>
+          <ShortLinkArea activeOpacity={1} onPress={copyLink}>
             <ShortLinkUrl numberOfLines={1}>
               http://bit.ly/fdjskjfgl
             </ShortLinkUrl>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={copyLink}>
               <Feather name="copy" color="#fff" size={25} />
             </TouchableOpacity>
           </ShortLinkArea>
