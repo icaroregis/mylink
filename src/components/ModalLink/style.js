@@ -22,17 +22,17 @@ export const LinkArea = styled.View`
 export const Title = styled.Text`
   font-size: 33px;
   font-weight: bold;
-  color: '#1ccbae';
+  color: #1ccbae;
 `;
 export const LongUrl = styled.Text`
   font-size: 17px;
-  color: '#a7a7a7';
+  color: #a7a7a7;
   margin-bottom: 30px;
 `;
 export const ShortLinkArea = styled.TouchableOpacity`
   height: 45px;
   width: 100%;
-  background-color: '#172742';
+  background-color: #172742;
   border-radius: 7px;
   flex-direction: row;
   justify-content: space-between;
@@ -41,6 +41,6 @@ export const ShortLinkArea = styled.TouchableOpacity`
 `;
 export const ShortLinkUrl = styled.Text`
   width: 90%;
-  color: '#fff';
+  color: #fff;
   font-size: 16px;
 `;
