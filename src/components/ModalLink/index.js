@@ -24,17 +24,22 @@ export default function ModalLink({ onClose }) {
           <TouchableOpacity onPress={onClose}>
             <Feather name="x" color="#212743" size={30} />
           </TouchableOpacity>
+
           <TouchableOpacity>
             <Feather name="share" color="#212743" size={30} />
           </TouchableOpacity>
         </Header>
+
         <LinkArea>
           <Title>Link encurtado</Title>
+
           <LongUrl numberOfLines={1}>http://sujeitoprogramador.com</LongUrl>
+
           <ShortLinkArea activeOpacity={1}>
             <ShortLinkUrl numberOfLines={1}>
               http://bit.ly/fdjskjfgl
             </ShortLinkUrl>
+
             <TouchableOpacity>
               <Feather name="copy" color="#fff" size={25} />
             </TouchableOpacity>
