@@ -38,6 +38,7 @@ export default function Home() {
     } catch {
       alert('Ops, parece que algo deu errado!');
       Keyboard.dismiss();
+      setInput('');
     }
     // setModalVisible(true);
   }
