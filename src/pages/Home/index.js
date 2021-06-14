@@ -35,7 +35,10 @@ export default function Home() {
         long_url: input,
       });
       console.log(response.data);
-    } catch {}
+    } catch {
+      alert('Ops, parece que algo deu errado!');
+      Keyboard.dismiss();
+    }
     // setModalVisible(true);
   }
 
