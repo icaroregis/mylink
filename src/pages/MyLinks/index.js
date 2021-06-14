@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import StatusBarPage from '../../components/StatusBarPage';
 import { Container, Title, ListLinks } from './styles';
 import Menu from '../../components/Menu';
