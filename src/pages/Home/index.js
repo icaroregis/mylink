@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import StatusBarPage from '../../components/StatusBarPage';
@@ -28,17 +29,25 @@ import api from '../../services/api';
 export default function Home() {
   const [input, setInput] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({});
 
   async function handleShortLink() {
+    setLoading(true);
     try {
       const response = await api.post('/shorten', {
         long_url: input,
       });
-      console.log(response.data);
+      setData(response.data);
+      setModalVisible(true);
+      Keyboard.dismiss();
+      setLoading(false);
+      setInput('');
     } catch {
       alert('Ops, parece que algo deu errado!');
       Keyboard.dismiss();
       setInput('');
+      setLoading(false);
     }
     // setModalVisible(true);
   }
@@ -84,13 +93,17 @@ export default function Home() {
             </ContainerInput>
 
             <ButtonLink onPress={handleShortLink}>
-              <ButtonLinkText>Gerar Link</ButtonLinkText>
+              {loading ? (
+                <ActivityIndicator color="#121212" size={24} />
+              ) : (
+                <ButtonLinkText>Gerar Link</ButtonLinkText>
+              )}
             </ButtonLink>
           </ContainerContent>
         </KeyboardAvoidingView>
 
         <Modal visible={modalVisible} transparent animationType="slide">
-          <ModalLink onClose={() => setModalVisible(false)} />
+          <ModalLink onClose={() => setModalVisible(false)} data={data} />
         </Modal>
       </LinearGradient>
     </TouchableWithoutFeedback>
