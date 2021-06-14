@@ -23,14 +23,20 @@ import {
 } from './style';
 import { Feather } from '@expo/vector-icons';
 import ModalLink from '../../components/ModalLink/index';
+import api from '../../services/api';
 
 export default function Home() {
   const [input, setInput] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  function handleShortLink() {
-    // alert('URL DIGITADA:' + input);
-    setModalVisible(true);
+  async function handleShortLink() {
+    try {
+      const response = await api.post('/shorten', {
+        long_url: input,
+      });
+      console.log(response.data);
+    } catch {}
+    // setModalVisible(true);
   }
 
   return (
