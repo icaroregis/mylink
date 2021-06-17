@@ -40,6 +40,9 @@ export default function Home() {
       });
       setData(response.data);
       setModalVisible(true);
+
+      //SALVAR O LINK EM UMA LISTA NO STORAGE!
+
       Keyboard.dismiss();
       setLoading(false);
       setInput('');
