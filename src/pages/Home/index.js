@@ -42,7 +42,8 @@ export default function Home() {
       setData(response.data);
       setModalVisible(true);
 
-      saveLink('1235468745', response.data);
+      saveLink('sujeitolinks', response.data);
+      console.log(response.data);
 
       Keyboard.dismiss();
       setLoading(false);

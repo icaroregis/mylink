@@ -12,12 +12,14 @@ export default function MyLinks() {
   const [data, setData] = useState({});
   const [modalVisible, setVisible] = useState(false);
 
-  useEffect(() => {}, []);
-  async function getLinks() {
-    const result = await getLinksSave('1235468745');
-    setLinks(result);
-  }
-  getLinks();
+  useEffect(() => {
+    async function getLinks() {
+      const result = await getLinksSave('1235468745');
+      setLinks(result);
+      console.log(result);
+    }
+    getLinks();
+  }, []);
 
   return (
     <Container>
