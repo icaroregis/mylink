@@ -25,6 +25,7 @@ import {
 import { Feather } from '@expo/vector-icons';
 import ModalLink from '../../components/ModalLink/index';
 import api from '../../services/api';
+import { saveLink } from '../../components/utils/storeLinks';
 
 export default function Home() {
   const [input, setInput] = useState('');
@@ -41,7 +42,7 @@ export default function Home() {
       setData(response.data);
       setModalVisible(true);
 
-      //SALVAR O LINK EM UMA LISTA NO STORAGE!
+      saveLink('1235468745', response.data);
 
       Keyboard.dismiss();
       setLoading(false);
