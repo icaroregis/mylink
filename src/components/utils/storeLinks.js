@@ -12,7 +12,7 @@ export async function saveLink(key, newLink) {
   let linkStored = await getLinksSave(key);
   //ignorar link com mesma descrição ou c/ mesmo id
   const hasLink = linkStored.some((link) => link.id === newLink.id);
-  if (haslink) {
+  if (hasLink) {
     console.log('Link já existe na lista');
     return;
   }
