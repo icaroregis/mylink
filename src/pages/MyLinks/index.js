@@ -5,12 +5,18 @@ import Menu from '../../components/Menu';
 import ListItem from '../../components/ListItem';
 import { useIsFocused } from '@react-navigation/native';
 import { getLinksSave } from '../../components/utils/storeLinks';
+import ModalLink from '../../components/ModalLink';
+import { Modal } from 'react-native';
 
 export default function MyLinks() {
   const isFocused = useIsFocused;
   const [links, setLinks] = useState([]);
   const [data, setData] = useState({});
   const [modalVisible, setVisible] = useState(false);
+
+  function handleItem(item) {
+    setData(item);
+  }
 
   useEffect(() => {
     async function getLinks() {
@@ -29,10 +35,16 @@ export default function MyLinks() {
       <ListLinks
         data={links}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <ListItem data={item} />}
+        renderItem={({ item }) => (
+          <ListItem data={item} selectedItem={handleItem} />
+        )}
         contentContainerStyle={{ paddingBottom: 20 }}
         showsVerticalScrollIndicator={false} //tirar a barra de rolagem
       />
+
+      <Modal visible={modalVisible} transparent animationType="slide">
+        <ModalLink onClose={() => setModalVisible(false)} data={data} />
+      </Modal>
     </Container>
   );
 }
