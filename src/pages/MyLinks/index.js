@@ -12,10 +12,11 @@ export default function MyLinks() {
   const isFocused = useIsFocused;
   const [links, setLinks] = useState([]);
   const [data, setData] = useState({});
-  const [modalVisible, setVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   function handleItem(item) {
     setData(item);
+    setModalVisible(true);
   }
 
   useEffect(() => {
