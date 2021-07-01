@@ -23,4 +23,10 @@ export async function saveLink(key, newLink) {
 }
 
 //deletear algum link específico
-export async function deleteLink(links, id) {}
+export async function deleteLink(links, id) {
+  let mylinks = links.filter((item) => {
+    return item.id !== id;
+  });
+  await AsyncStorage.setItem('sujeitoLinks', JSON.stringify(mylinks));
+  return mylinks;
+}

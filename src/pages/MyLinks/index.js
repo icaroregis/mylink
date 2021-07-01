@@ -4,7 +4,7 @@ import { Container, Title, ListLinks } from './styles';
 import Menu from '../../components/Menu';
 import ListItem from '../../components/ListItem';
 import { useIsFocused } from '@react-navigation/native';
-import { getLinksSave } from '../../components/utils/storeLinks';
+import { getLinksSave, deleteLink } from '../../components/utils/storeLinks';
 import ModalLink from '../../components/ModalLink';
 import { Modal } from 'react-native';
 
@@ -17,6 +17,11 @@ export default function MyLinks() {
   function handleItem(item) {
     setData(item);
     setModalVisible(true);
+  }
+
+  async function handleDelete(id) {
+    const result = await deleteLink(links, id);
+    setLinks(result);
   }
 
   useEffect(() => {
@@ -37,7 +42,11 @@ export default function MyLinks() {
         data={links}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
-          <ListItem data={item} selectedItem={handleItem} />
+          <ListItem
+            data={item}
+            selectedItem={handleItem}
+            deleteItem={handleDelete}
+          />
         )}
         contentContainerStyle={{ paddingBottom: 20 }}
         showsVerticalScrollIndicator={false} //tirar a barra de rolagem
