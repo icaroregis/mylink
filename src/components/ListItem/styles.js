@@ -15,7 +15,7 @@ export const Item = styled.Text`
 `;
 export const ActionContainer = styled.TouchableOpacity`
   width: '15%';
-  background-color: '#ff5555';
+  background-color: #ff5555;
   border-radius: 7px;
   justify-content: center;
   align-items: center;
