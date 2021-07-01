@@ -44,7 +44,6 @@ export default function Home() {
       setModalVisible(true);
 
       saveLink('sujeitolinks', response.data);
-      console.log(data);
 
       Keyboard.dismiss();
       setLoading(false);
