@@ -50,7 +50,7 @@ export default function MyLinks() {
           <ActivityIndicator color="#fff" />
         </ContainerEmpty>
       }
-      {links.length === 0 && (
+      {!loading && links.length === 0 && (
         <ContainerEmpty>
           <WarningText>Você ainda não possui nenhum link salvo.</WarningText>
         </ContainerEmpty>
