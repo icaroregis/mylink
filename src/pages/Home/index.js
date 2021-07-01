@@ -40,6 +40,7 @@ export default function Home() {
         long_url: input,
       });
       setData(response.data);
+      console.log(response.data);
       setModalVisible(true);
 
       saveLink('sujeitolinks', response.data);

@@ -14,12 +14,12 @@ export default function MyLinks() {
 
   useEffect(() => {
     async function getLinks() {
-      const result = await getLinksSave('1235468745');
+      const result = await getLinksSave('sujeitolinks');
       setLinks(result);
       console.log(result);
     }
     getLinks();
-  }, []);
+  }, [isFocused]);
 
   return (
     <Container>

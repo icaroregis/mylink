@@ -19,6 +19,7 @@ export async function saveLink(key, newLink) {
 
   linkStored.push(newLink);
   await AsyncStorage.setItem(key, JSON.stringify(linkStored));
+  console.log('LINK SALVO COM SUCESSO');
 }
 
 //deletear algum link específico
